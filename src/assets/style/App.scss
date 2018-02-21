@@ -1,0 +1,237 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+$green: #86BB71;
+$blue: #94C2ED;
+$orange: #E38968;
+$gray: #92959E;
+$gray_mid_light: rgba(184, 184, 184, .5);
+$gray_s_light: rgba(208, 208, 208, 1);
+$bg_app: #444753;
+$bg_params: #F2F5F8;
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+p, h1, h2 {
+  margin: 0;
+}
+
+body {
+  background: $orange;
+  font: 14px/20px "Lato", Arial, sans-serif;
+  padding: 0;
+  color: white;
+}
+
+.wrapContainer {
+  margin: 25px auto;
+  max-width: 1170px;
+  min-height: 80vh;
+  background-color: $bg_app;
+  border-radius: 5px;
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.4);
+  display: flex;
+  //______________________________________________________________propertyList__
+  .propertyList {
+    width: 25%;
+    //min-height: 80vh;
+    .propertyListHeader {
+      padding: 25px 25px 20px;
+      .titleHead {
+        margin-left: 10px;
+        font-weight: bold;
+        font-size: 24px;
+        text-shadow: 0 0 5px $gray_s_light;
+      }
+    }
+    .list {
+      padding: 20px;
+      border-top: 2px solid rgba(96, 96, 96, .6);
+      .itemProperty {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        border-bottom: 1px solid rgba(96, 96, 96, .6);
+        .about {
+          .name {
+            font-size: 16px;
+            &:hover {
+              color: $gray_s_light;
+            }
+          }
+          .status {
+            font-size: 12px;
+            color: $gray;
+          }
+        }
+        img {
+          width: 35px;
+          height: 35px;
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+  //_______________________________________________________________________paramsList__
+  .paramsList {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    background-color: $bg_params;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #434651;
+    //_____________________paramsListHeader__
+    .paramsListHeader {
+      padding: 15px;
+      border-top-right-radius: 5px;
+      border-bottom: 1px solid $gray_mid_light;
+      background-color: $gray_s_light;
+      box-shadow: inset 0 -5px 20px $gray_mid_light;
+      .paramsAbout {
+        margin-left: 10px;
+        .titleHeader {
+          font-weight: bold;
+          font-size: 24px;
+        }
+        .subTitle {
+          color: $gray;
+          font-size: 15px;
+        }
+      }
+    }
+    //___________________________itemsList__
+    .itemsList {
+      border-top: 2px solid white;
+      .selectItem {
+        padding: 30px 30px 0;
+        margin: 0;
+        border-bottom: 2px solid white;
+        min-height: 70vh;
+        .itemForm {
+          display: flex;
+          justify-content: space-between;
+          list-style: none;
+          padding: 10px;
+          margin-bottom: 10px;
+          background-color: rgba(200, 200, 200, .3);
+          border: 1px solid rgba(184, 184, 184, .5);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+          border-radius: 4px;
+          .wrapSelect {
+            width: 48%;
+            border: 1px solid rgba(184, 184, 184, .4);
+            border-radius: 4px;
+            padding: 5px;
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+            background-color: rgba(240, 240, 240, .4);
+            .itemHeader {
+              display: flex;
+              justify-content: space-between;
+              .btnItem {
+                width: 15px;
+                height: 15px;
+                background-color: inherit;
+              }
+            }
+            .itemProp {
+              padding: 5px;
+              display: flex;
+              .params {
+                display: flex;
+                width: 200px;
+                outline: none;
+                .prop {
+                  border: 1px solid #444753;
+                  padding: 0 5px;
+                  margin-left: 10px;
+                }
+                &:last-child {
+                  margin-left: 0;
+                }
+              }
+            }
+          }
+          .wrapView {
+            width: 50%;
+            border: 1px solid rgba(184, 184, 184, .5);
+            border-radius: 4px;
+            padding: 5px;
+            background-color: rgba(240, 240, 240, .4);
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+          }
+        }
+      }
+      .itemsSubmit {
+        padding: 20px 0;
+        box-shadow: inset 0 -4px 4px rgba(0, 0, 0, .35);
+        .submitBtn {
+          text-align: center;
+          .btn {
+            display: inline-block;
+            margin: 0;
+            padding: 5px 50px;
+            font: 300 16px/1.5 'entypo', sans-serif;
+            border-radius: 25px;
+            text-decoration: none;
+            background-color: rgba(250, 250, 255, .05);
+            color: rgba(128, 128, 128, 1);
+            box-shadow: inset 0 1px 0 0 rgba(250, 250, 255, .3),
+            inset 0 -.5em 0 0 rgba(0, 0, 5, .05),
+            inset 0 .25em 1em 0 rgba(250, 250, 255, .1),
+            inset 0 -.25em 1em 0 rgba(0, 0, 5, .5),
+            inset 0 -1px 0 0 rgba(0, 0, 5, .1),
+            0 0 .25em 0 rgba(0, 0, 5, .5);
+            &:hover {
+              background-color: rgba(232, 232, 232, .3);
+              box-shadow: inset 0 1px 0 0 rgba(250, 250, 255, .5),
+              inset 0 -.45em 0 0 rgba(0, 0, 5, .05),
+              inset 0 .20em 1em 0 rgba(250, 250, 255, .1),
+              inset 0 -.20em 1em 0 rgba(0, 0, 5, .5),
+              inset 0 -1px 0 0 rgba(0, 0, 5, .1),
+              0 0 .20em 0 rgba(0, 0, 5, .5);
+            }
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+    //_________________________paramsListFooter
+    .paramsListFooter {
+      padding: 10px 0 0;
+      border-bottom-right-radius: 5px;
+      //border-top: 1px solid rgba(200,200,200,1);
+      background-color: $bg_app;
+    }
+  }
+}
+
+.online, .offline, .me {
+  margin-right: 3px;
+  font-size: 10px;
+}
+
+.online {
+  color: $green;
+}
+
+.me {
+  color: $blue;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.float-right {
+  float: right;
+}
+
+
