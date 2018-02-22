@@ -1,6 +1,6 @@
-export default function deleteUserAction(id) {
+export default function deleteUserAction(index) {
     return {
         type: 'DELETE_ITEM',
-        id
+        index: index
     }
 }

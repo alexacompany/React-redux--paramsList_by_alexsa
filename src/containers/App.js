@@ -6,11 +6,11 @@ import MesageList from '../components/MesageList/index';
 //action_creator
 import setUserAction from '../Actions/UserCreator';
 import deleteUserAction from '../Actions/ItemDelete';
+import getValueAction from '../Actions/GetValue';
+import saveValueAction from '../Actions/SaveValue';
 import '../assets/style/App.css';
 
 class App extends Component {
-
-
 
   render() {
     return (
@@ -21,7 +21,10 @@ class App extends Component {
                 add={this.props.add}
             />
             <MesageList
-                delete={this.props.deleteUserFunction}
+                deleteFn={this.props.deleteUserFunction}
+                // getValueFn={this.props.getValueFunction}
+                saveValueFn={this.props.saveValueFunction}
+                submit={this.props.submit}
                 add={this.props.add}
             />
         </div>
@@ -29,24 +32,11 @@ class App extends Component {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function mapStateToProps(state) {
     return {
         user: state.user,
-        add: state.addUser
+        add: state.addUser,
+        submit: state.submitInfo
     }
 }
 function mapDispatchToProps(dispatch) {
@@ -54,8 +44,14 @@ function mapDispatchToProps(dispatch) {
         setUserFunction: users => {
             dispatch(setUserAction(users))
         },
-        deleteUserFunction: id => {
-            dispatch(deleteUserAction(id))
+        deleteUserFunction: index => {
+            dispatch(deleteUserAction(index))
+        },
+        getValueFunction: value => {
+            dispatch(getValueAction(value))
+        },
+        saveValueFunction: value => {
+            dispatch(saveValueAction(value))
         }
     }
 }

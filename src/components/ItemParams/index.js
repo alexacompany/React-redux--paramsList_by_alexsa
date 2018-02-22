@@ -2,51 +2,45 @@ import React, { Component } from 'react';
 
 class ItemParams extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+        // this.handlerValue = this.handlerValue.bind(this);
+        this.handlerSave = this.handlerSave.bind(this)
     }
-    deleteBlock(id) {
-        this.props.delete(id)
+
+    handlerSave() {
+        this.props.saveValueFn(this.setValue.value)
     }
+
     render() {
-
+        console.log(this.setValue)
         return (
-            <ul className="selectItem">
-                {
-                    this.props.add.map((item, index) => {
-                        return (
-                            <li className="itemForm"
-                                key={index}
-                                index={index}>
-                                <div className="wrapSelect">
-                                    <div className="itemHeader">
-                                        {item.name}
-                                        <div className='btnItem'
-                                             onClick={this.deleteBlock.bind(this)}>
-                                            <i className="far fa-times-circle"></i>
-                                        </div>
-                                    </div>
-                                    <div className="itemProp">
-                                        <select className="params">
-                                            <option value={item.prop1}>{item.prop1}</option>
-                                            <option value={item.prop2}>{item.prop2}</option>
-                                            <option value={item.prop3}>{item.prop3}</option>
-                                            <option value={item.prop4}>{item.prop4}</option>
-                                            <option value={item.prop5}>{item.prop5}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="wrapView">
-                                    <div className="testInfo">
-                                        <p className="text">
-
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-                        );
-                    })
-                }
-            </ul>
+            <div className="wrapSelect">
+                <div className="itemHeader">
+                    {this.props.item.name}
+                </div>
+                <div className="itemProp">
+                    <select
+                        className="params"
+                        value={this.props.submit}
+                        // onChange={this.handlerValue}
+                        ref={(value) => this.setValue = value}
+                    >
+                        <option value={this.props.item.prop1}>{this.props.item.prop1}</option>
+                        <option value={this.props.item.prop2}>{this.props.item.prop2}</option>
+                        <option value={this.props.item.prop3}>{this.props.item.prop3}</option>
+                        <option value={this.props.item.prop4}>{this.props.item.prop4}</option>
+                        <option value={this.props.item.prop5}>{this.props.item.prop5}</option>
+                    </select>
+                </div>
+                <div className="saveBtn">
+                    <button
+                        className="save"
+                        onClick={this.handlerSave}
+                    >
+                        Save
+                    </button>
+                </div>
+            </div>
         )
     }
 }

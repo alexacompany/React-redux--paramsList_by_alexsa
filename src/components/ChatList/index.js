@@ -21,7 +21,7 @@ class ChatList extends Component {
                             Property
                         </h2>
                     </div>
-                    <ul className="list">
+                    <ul className="listContainer">
                         {
                             this.props.user.map((item, id) => {
                                 return (
