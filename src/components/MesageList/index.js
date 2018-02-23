@@ -9,7 +9,7 @@ class MesageList extends Component {
     }
 
     render() {
-        console.log(this.props.submit)
+        // console.log(this.props.submit)
         return (
                 <div className="paramsList">
                     <div className="paramsListHeader">
@@ -37,6 +37,7 @@ class MesageList extends Component {
                                             <ItemParams
                                                 item={item}
                                                 saveValueFn={this.props.saveValueFn}
+                                                submit={this.props.submit}
                                             />
                                             <div className="wrapBtn">
                                                 <BtnDelete

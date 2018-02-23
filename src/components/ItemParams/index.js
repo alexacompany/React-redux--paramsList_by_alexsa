@@ -4,15 +4,20 @@ class ItemParams extends Component {
     constructor(props) {
         super(props);
         // this.handlerValue = this.handlerValue.bind(this);
-        this.handlerSave = this.handlerSave.bind(this)
+        this.handlerSave = this.handlerSave.bind(this);
+        // this.handlerValue = this.handlerValue.bind(this);
     }
 
     handlerSave() {
         this.props.saveValueFn(this.setValue.value)
     }
+    // handlerValue(e) {
+    //     let x = e.target.value;
+    // }
+
 
     render() {
-        console.log(this.setValue)
+    // console.log(this.handlerValue());
         return (
             <div className="wrapSelect">
                 <div className="itemHeader">
@@ -21,9 +26,9 @@ class ItemParams extends Component {
                 <div className="itemProp">
                     <select
                         className="params"
-                        value={this.props.submit}
+                        // value={this.props.submit}
                         // onChange={this.handlerValue}
-                        ref={(value) => this.setValue = value}
+                        ref={(value) => {this.setValue = value}}
                     >
                         <option value={this.props.item.prop1}>{this.props.item.prop1}</option>
                         <option value={this.props.item.prop2}>{this.props.item.prop2}</option>

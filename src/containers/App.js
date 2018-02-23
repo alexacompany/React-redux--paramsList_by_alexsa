@@ -3,16 +3,28 @@ import { connect } from 'react-redux';
 //component
 import ChatList from '../components/ChatList/index'
 import MesageList from '../components/MesageList/index';
+import ModalInfo from '../components/ModalInfo/index';
 //action_creator
 import setUserAction from '../Actions/UserCreator';
 import deleteUserAction from '../Actions/ItemDelete';
-import getValueAction from '../Actions/GetValue';
 import saveValueAction from '../Actions/SaveValue';
+import openModalAction from '../Actions/OpenModal';
+import closeModalAction from '../Actions/CloseModal';
+
 import '../assets/style/App.css';
 
 class App extends Component {
 
+    handleClick(e){
+        e.preventDefault();
+        if (this.props.modalItem)
+            this.props.closeModal();
+        else
+            this.props.openModal();
+    }
+
   render() {
+        console.log(this.props.modalItem)
     return (
         <div className="wrapContainer">
             <ChatList
@@ -22,11 +34,16 @@ class App extends Component {
             />
             <MesageList
                 deleteFn={this.props.deleteUserFunction}
-                // getValueFn={this.props.getValueFunction}
                 saveValueFn={this.props.saveValueFunction}
                 submit={this.props.submit}
                 add={this.props.add}
             />
+            <div className="page">
+                <button onClick={(e)=>this.handleClick(e)}>
+                    Open Modal
+                </button>
+            </div>
+            {this.props.modalItem && <ModalInfo closeModal={this.props.closeModal}/>}
         </div>
     );
   }
@@ -36,7 +53,8 @@ function mapStateToProps(state) {
     return {
         user: state.user,
         add: state.addUser,
-        submit: state.submitInfo
+        submit: state.submitInfo,
+        modalItem: state.modalItem
     }
 }
 function mapDispatchToProps(dispatch) {
@@ -47,11 +65,14 @@ function mapDispatchToProps(dispatch) {
         deleteUserFunction: index => {
             dispatch(deleteUserAction(index))
         },
-        getValueFunction: value => {
-            dispatch(getValueAction(value))
-        },
-        saveValueFunction: value => {
+        saveValueFunction: (value) => {
             dispatch(saveValueAction(value))
+        },
+        openModal: () => {
+            return dispatch(openModalAction())
+        },
+        closeModal: () => {
+            return dispatch(closeModalAction())
         }
     }
 }
