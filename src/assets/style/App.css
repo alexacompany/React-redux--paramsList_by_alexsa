@@ -6,7 +6,7 @@ p, h1, h2 {
   margin: 0; }
 
 body {
-  background: #E38968;
+  background: white;
   font: 14px/20px "Lato", Arial, sans-serif;
   padding: 0;
   color: white; }
@@ -17,7 +17,6 @@ body {
   min-height: 80vh;
   background-color: #444753;
   border-radius: 5px;
-  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.4);
   display: flex; }
   .wrapContainer .propertyList {
     width: 25%; }
@@ -32,26 +31,53 @@ body {
       padding: 20px;
       border-top: 2px solid rgba(96, 96, 96, 0.6); }
       .wrapContainer .propertyList .listContainer .itemProperty {
+        position: relative;
         display: flex;
         justify-content: space-between;
         margin-bottom: 15px;
         border-bottom: 1px solid rgba(96, 96, 96, 0.6); }
-        .wrapContainer .propertyList .listContainer .itemProperty .about .name {
-          font-size: 16px; }
-          .wrapContainer .propertyList .listContainer .itemProperty .about .name:hover {
-            color: #d0d0d0; }
-        .wrapContainer .propertyList .listContainer .itemProperty .about .status {
-          font-size: 12px;
-          color: #92959E; }
+        .wrapContainer .propertyList .listContainer .itemProperty:hover img {
+          margin-right: 0;
+          transition: .75s; }
+        .wrapContainer .propertyList .listContainer .itemProperty:before, .wrapContainer .propertyList .listContainer .itemProperty:after {
+          position: absolute;
+          content: '';
+          width: 0;
+          height: 1px;
+          bottom: -1px;
+          background-color: #f78c65; }
+        .wrapContainer .propertyList .listContainer .itemProperty:before {
+          left: 0; }
+        .wrapContainer .propertyList .listContainer .itemProperty:after {
+          right: 0; }
+        .wrapContainer .propertyList .listContainer .itemProperty:hover:before, .wrapContainer .propertyList .listContainer .itemProperty:hover:after {
+          transition: 1s;
+          width: 40%; }
+        .wrapContainer .propertyList .listContainer .itemProperty:active {
+          transition: .2s;
+          border-bottom: 1px solid #75c157; }
+        .wrapContainer .propertyList .listContainer .itemProperty .about {
+          display: flex;
+          flex-direction: column; }
+          .wrapContainer .propertyList .listContainer .itemProperty .about .name {
+            font-size: 16px; }
+            .wrapContainer .propertyList .listContainer .itemProperty .about .name:hover {
+              color: #d0d0d0; }
+          .wrapContainer .propertyList .listContainer .itemProperty .about .status {
+            font-size: 12px;
+            color: #92959E; }
         .wrapContainer .propertyList .listContainer .itemProperty img {
-          width: 35px;
-          height: 35px;
-          margin-left: 15px; }
+          width: 30px;
+          height: 30px;
+          margin-right: 5px; }
+      .wrapContainer .propertyList .listContainer .toggled {
+        background-color: #2f70e1;
+        color: #fff; }
   .wrapContainer .paramsList {
     display: flex;
     flex-direction: column;
     width: 75%;
-    background-color: #F2F5F8;
+    background-color: #f2f2f2;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     color: #434651; }
@@ -83,196 +109,117 @@ body {
             text-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
             margin: 0 5px; }
     .wrapContainer .paramsList .itemsList {
-      border-top: 2px solid white; }
+      border-top: 2px solid white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; }
       .wrapContainer .paramsList .itemsList .selectItem {
-        padding: 30px 30px 0;
-        margin: 0;
-        border-bottom: 2px solid white;
-        min-height: 70vh; }
-        .wrapContainer .paramsList .itemsList .selectItem .itemForm {
-          display: flex;
-          justify-content: space-between;
-          list-style: none;
-          padding: 10px;
-          margin-bottom: 15px;
-          background-color: rgba(205, 205, 197, 0.4);
-          border: 1px solid rgba(184, 184, 184, 0.5);
-          box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
-          border-radius: 4px; }
-          .wrapContainer .paramsList .itemsList .selectItem .itemForm .wrapSelect {
-            width: 100%;
-            border: 1px solid rgba(184, 184, 184, 0.4);
-            border-radius: 4px;
-            padding: 5px;
-            box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
-            background-color: rgba(240, 240, 240, 0.4); }
-            .wrapContainer .paramsList .itemsList .selectItem .itemForm .wrapSelect .itemHeader {
-              position: relative;
-              text-shadow: 0 0 2px rgba(0, 0, 0, 0.3); }
-            .wrapContainer .paramsList .itemsList .selectItem .itemForm .wrapSelect .itemProp {
-              padding: 5px;
-              display: flex; }
-              .wrapContainer .paramsList .itemsList .selectItem .itemForm .wrapSelect .itemProp .params {
-                display: flex;
-                width: 250px;
-                outline: none; }
-                .wrapContainer .paramsList .itemsList .selectItem .itemForm .wrapSelect .itemProp .params .prop {
-                  border: 1px solid #444753;
-                  padding: 0 5px;
-                  margin-left: 10px; }
-                .wrapContainer .paramsList .itemsList .selectItem .itemForm .wrapSelect .itemProp .params:last-child {
-                  margin-left: 0; }
-            .wrapContainer .paramsList .itemsList .selectItem .itemForm .wrapSelect .saveBtn {
-              text-align: center; }
-              .wrapContainer .paramsList .itemsList .selectItem .itemForm .wrapSelect .saveBtn .save {
-                display: inline-block;
-                margin: 0;
-                padding: 2px 10px;
-                font: 500 12px/1.5 'entypo', sans-serif;
-                border-radius: 20px;
-                text-decoration: none;
-                background-color: rgba(250, 250, 255, 0.05);
-                color: gray;
-                box-shadow: inset 0 1px 0 0 rgba(250, 250, 255, 0.3), inset 0 -0.5em 0 0 rgba(0, 0, 5, 0.05), inset 0 0.25em 1em 0 rgba(250, 250, 255, 0.1), inset 0 -0.25em 1em 0 rgba(0, 0, 5, 0.5), inset 0 -1px 0 0 rgba(0, 0, 5, 0.1), 0 0 0.25em 0 rgba(0, 0, 5, 0.5); }
-                .wrapContainer .paramsList .itemsList .selectItem .itemForm .wrapSelect .saveBtn .save:hover {
-                  background-color: rgba(232, 232, 232, 0.3);
-                  box-shadow: inset 0 1px 0 0 rgba(250, 250, 255, 0.5), inset 0 -0.45em 0 0 rgba(0, 0, 5, 0.05), inset 0 0.2em 1em 0 rgba(250, 250, 255, 0.1), inset 0 -0.2em 1em 0 rgba(0, 0, 5, 0.5), inset 0 -1px 0 0 rgba(0, 0, 5, 0.1), 0 0 0.2em 0 rgba(0, 0, 5, 0.5); }
-                .wrapContainer .paramsList .itemsList .selectItem .itemForm .wrapSelect .saveBtn .save:focus {
-                  outline: none; }
-          .wrapContainer .paramsList .itemsList .selectItem .itemForm .btnClose {
-            position: relative;
-            margin: 0;
-            width: 20px;
-            height: 20px;
-            cursor: pointer; }
-            .wrapContainer .paramsList .itemsList .selectItem .itemForm .btnClose:hover .inner:before,
-            .wrapContainer .paramsList .itemsList .selectItem .itemForm .btnClose:hover .inner:after {
-              background: #CD661D;
-              width: 35px;
-              left: -7px;
-              box-shadow: 0 0 14px #FF5B0A;
-              transform: rotate(0); }
-            .wrapContainer .paramsList .itemsList .selectItem .itemForm .btnClose:hover .inner:before {
-              top: 0; }
-            .wrapContainer .paramsList .itemsList .selectItem .itemForm .btnClose:hover .inner:after {
-              bottom: 0; }
-            .wrapContainer .paramsList .itemsList .selectItem .itemForm .btnClose .inner {
-              width: 20px;
-              height: 20px;
-              text-align: center;
-              paddin-bottom: 10px; }
-              .wrapContainer .paramsList .itemsList .selectItem .itemForm .btnClose .inner:before, .wrapContainer .paramsList .itemsList .selectItem .itemForm .btnClose .inner:after {
-                position: absolute;
-                content: '';
-                height: 2px;
-                width: inherit;
-                background: #444753;
-                left: 0;
-                transition: all .25s ease-in; }
-              .wrapContainer .paramsList .itemsList .selectItem .itemForm .btnClose .inner:before {
-                top: 50%;
-                transform: rotate(45deg); }
-              .wrapContainer .paramsList .itemsList .selectItem .itemForm .btnClose .inner:after {
-                bottom: 50%;
-                transform: rotate(-45deg); }
-              .wrapContainer .paramsList .itemsList .selectItem .itemForm .btnClose .inner:hover p {
-                opacity: 1; }
-              .wrapContainer .paramsList .itemsList .selectItem .itemForm .btnClose .inner p {
-                font-size: 9px;
-                line-height: 20px;
-                text-align: center;
-                letter-spacing: 1.5px;
-                margin-left: -6px;
-                text-transform: uppercase;
-                color: #F2F5F8;
-                text-shadow: .4px .4px 14px black;
-                transition: all .25s ease-in;
-                opacity: 0;
-                cursor: pointer; }
-      .wrapContainer .paramsList .itemsList .itemsSubmit {
-        padding: 20px 0;
-        box-shadow: inset 0 -4px 4px rgba(0, 0, 0, 0.35); }
-        .wrapContainer .paramsList .itemsList .itemsSubmit .submitBtn {
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        padding: 0 15px; }
+        .wrapContainer .paramsList .itemsList .selectItem .funcBtn {
           text-align: center; }
-          .wrapContainer .paramsList .itemsList .itemsSubmit .submitBtn .btn {
+          .wrapContainer .paramsList .itemsList .selectItem .funcBtn .btn {
             display: inline-block;
             margin: 0;
-            padding: 4px 50px;
-            font: 500 16px/1.5 'entypo', sans-serif;
-            border-radius: 25px;
+            padding: 5px 70px;
+            font: 700 18px/1.5 'entypo', sans-serif;
+            border: 1px solid #444753;
+            border-radius: 5px;
             text-decoration: none;
             background-color: rgba(250, 250, 255, 0.05);
             color: gray;
-            box-shadow: inset 0 1px 0 0 rgba(250, 250, 255, 0.3), inset 0 -0.5em 0 0 rgba(0, 0, 5, 0.05), inset 0 0.25em 1em 0 rgba(250, 250, 255, 0.1), inset 0 -0.25em 1em 0 rgba(0, 0, 5, 0.5), inset 0 -1px 0 0 rgba(0, 0, 5, 0.1), 0 0 0.25em 0 rgba(0, 0, 5, 0.5); }
-            .wrapContainer .paramsList .itemsList .itemsSubmit .submitBtn .btn:hover {
-              background-color: rgba(232, 232, 232, 0.3);
-              box-shadow: inset 0 1px 0 0 rgba(250, 250, 255, 0.5), inset 0 -0.45em 0 0 rgba(0, 0, 5, 0.05), inset 0 0.2em 1em 0 rgba(250, 250, 255, 0.1), inset 0 -0.2em 1em 0 rgba(0, 0, 5, 0.5), inset 0 -1px 0 0 rgba(0, 0, 5, 0.1), 0 0 0.2em 0 rgba(0, 0, 5, 0.5); }
-            .wrapContainer .paramsList .itemsList .itemsSubmit .submitBtn .btn:focus {
+            box-shadow: inset 0 1px 0 0 rgba(250, 250, 255, 0.3); }
+            .wrapContainer .paramsList .itemsList .selectItem .funcBtn .btn:hover {
+              background-color: rgba(69, 139, 0, 0.05);
+              box-shadow: inset 0 0.2em 1em 0 rgba(69, 139, 0, 0.05); }
+            .wrapContainer .paramsList .itemsList .selectItem .funcBtn .btn:focus {
               outline: none; }
-    .wrapContainer .paramsList .paramsListFooter {
-      padding: 10px 0 0;
-      border-bottom-right-radius: 5px;
-      background-color: #444753; }
-  .wrapContainer .modal {
-    position: fixed;
-    padding-top: 5em;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4); }
-    .wrapContainer .modal .modal-content {
-      position: relative;
-      background-color: #fefefe;
-      margin: auto;
-      padding: 0;
-      border: 1px solid #888;
-      width: 50%;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      -webkit-animation-name: animatetop;
-      -webkit-animation-duration: 0.4s;
-      animation-name: animatetop;
-      animation-duration: 0.4s; }
-      .wrapContainer .modal .modal-content .modal-header {
-        padding: 2px 16px;
-        background-color: #b4e2b4;
-        color: white; }
-        .wrapContainer .modal .modal-content .modal-header .close {
-          color: #aaa;
-          float: right;
-          font-size: 28px;
-          font-weight: bold; }
-        .wrapContainer .modal .modal-content .modal-header .close:hover,
-        .wrapContainer .modal .modal-content .modal-header .close:focus {
-          color: black;
-          text-decoration: none;
-          cursor: pointer; }
-      .wrapContainer .modal .modal-content .modal-body {
-        padding: 2px 16px; }
-      .wrapContainer .modal .modal-content .modal-footer {
-        padding: 2px 16px;
-        background-color: #b4e2b4;
-        color: white; }
-
-@-webkit-keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0; }
-  to {
-    top: 0;
-    opacity: 1; } }
-
-@keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0; }
-  to {
-    top: 0;
-    opacity: 1; } }
+        .wrapContainer .paramsList .itemsList .selectItem .formHead {
+          padding: 15px 0; }
+          .wrapContainer .paramsList .itemsList .selectItem .formHead .itemsClear {
+            padding: 15px 0; }
+        .wrapContainer .paramsList .itemsList .selectItem .formBody {
+          height: 450px;
+          max-width: 100%;
+          overflow: auto; }
+          .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm {
+            width: 75%;
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            padding: 10px;
+            margin: 0 auto 15px;
+            background-color: rgba(205, 205, 197, 0.4);
+            border: 1px solid rgba(184, 184, 184, 0.5);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+            border-radius: 4px; }
+            .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm .wrapSelect {
+              border: 1px solid rgba(184, 184, 184, 0.4);
+              border-radius: 4px;
+              padding: 5px;
+              box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+              background-color: rgba(240, 240, 240, 0.4); }
+              .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm .wrapSelect .itemHeader {
+                position: relative;
+                text-shadow: 0 0 2px rgba(0, 0, 0, 0.3); }
+              .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm .wrapSelect .itemProp {
+                padding: 5px;
+                display: flex; }
+                .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm .wrapSelect .itemProp .params {
+                  display: flex;
+                  width: 250px;
+                  outline: none; }
+                  .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm .wrapSelect .itemProp .params .prop {
+                    border: 1px solid #444753;
+                    padding: 0 5px;
+                    margin-left: 10px; }
+                  .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm .wrapSelect .itemProp .params:last-child {
+                    margin-left: 0; }
+            .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm .wrapBtn {
+              padding: 5px 0; }
+              .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm .wrapBtn .btnClose {
+                position: relative;
+                width: 15px;
+                height: 4px;
+                cursor: pointer; }
+                .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm .wrapBtn .btnClose:hover .inner:before,
+                .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm .wrapBtn .btnClose:hover .inner:after {
+                  background: #CD661D;
+                  width: 15px;
+                  left: 0;
+                  box-shadow: 0 0 10px #f78c65;
+                  transform: rotate(0); }
+                .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm .wrapBtn .btnClose:hover .inner:before {
+                  top: 0; }
+                .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm .wrapBtn .btnClose:hover .inner:after {
+                  bottom: 0; }
+                .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm .wrapBtn .btnClose .inner {
+                  width: 15px;
+                  height: 20px;
+                  text-align: center; }
+                  .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm .wrapBtn .btnClose .inner:before, .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm .wrapBtn .btnClose .inner:after {
+                    position: absolute;
+                    content: '';
+                    height: 2px;
+                    width: inherit;
+                    background: #444753;
+                    left: 0;
+                    transition: all .25s ease-in; }
+                  .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm .wrapBtn .btnClose .inner:before {
+                    top: 50%;
+                    transform: rotate(45deg); }
+                  .wrapContainer .paramsList .itemsList .selectItem .formBody .itemForm .wrapBtn .btnClose .inner:after {
+                    bottom: 50%;
+                    transform: rotate(-45deg); }
+        .wrapContainer .paramsList .itemsList .selectItem .formFooter {
+          padding: 15px 0; }
+          .wrapContainer .paramsList .itemsList .selectItem .formFooter .itemsSubmit {
+            padding: 15px 0; }
 
 .online {
   margin-right: 3px;
   font-size: 10px;
-  color: #86BB71; }
+  color: #75c157; }

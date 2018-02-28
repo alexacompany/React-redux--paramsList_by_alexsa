@@ -12,9 +12,7 @@ class BtnDelete extends Component {
     render() {
         return (
         <div className="btnClose" onClick={this.deleteBlock}>
-            <div className="inner">
-                <p>close</p>
-            </div>
+            <div className="inner"></div>
         </div>
         )
     }

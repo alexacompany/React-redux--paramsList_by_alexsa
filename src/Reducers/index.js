@@ -1,14 +1,11 @@
 import { combineReducers } from 'redux';
+import {reducer as formReducer} from 'redux-form';
 
-import user from './usersObj';
-import addUser from './addUser';
-import submitInfo from './submitInfo';
-import modalItem from './modalItem';
-
+import menu from './api';
+import createItems from './createItems';
 
 export default combineReducers({
-    user,
-    addUser,
-    submitInfo,
-    modalItem,
+    menu,
+    createItems,
+    form: formReducer
 })

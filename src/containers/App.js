@@ -1,49 +1,63 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //component
-import ChatList from '../components/ChatList/index'
-import MesageList from '../components/MesageList/index';
-import ModalInfo from '../components/ModalInfo/index';
+import MenuList from '../components/MenuList/index';
+import FormSubmit from '../components/FormSubmit/index';
+
 //action_creator
-import setUserAction from '../Actions/UserCreator';
+import setUserAction from '../Actions/ItemCreator';
 import deleteUserAction from '../Actions/ItemDelete';
-import saveValueAction from '../Actions/SaveValue';
-import openModalAction from '../Actions/OpenModal';
-import closeModalAction from '../Actions/CloseModal';
 
 import '../assets/style/App.css';
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        // this.state = {
+        //     isShowModal: false,
+        // }
+    }
 
-    handleClick(e){
-        e.preventDefault();
-        if (this.props.modalItem)
-            this.props.closeModal();
-        else
-            this.props.openModal();
+    handleClick = () => {
+        this.setState({
+            isShowModal: !this.props.isShowModal
+        })
+    };
+
+    closeModal2 = () => {
+        this.setState({
+            isShowModal: false,
+        })
     }
 
   render() {
-        console.log(this.props.modalItem)
+        const {
+            add,
+            menu,
+            setUserFunction,
+            deleteUserFunction } = this.props;
     return (
         <div className="wrapContainer">
-            <ChatList
-                user={this.props.user}
-                setUser={this.props.setUserFunction}
-                add={this.props.add}
+            {/*{*/}
+                {/*this.state.isShowModal &&*/}
+                {/*<ModalInfo*/}
+                    {/*closeModal2={this.closeModal2}*/}
+                    {/*data={this.props.menu}*/}
+                {/*/>*/}
+            {/*}*/}
+            <MenuList
+                menu={menu}
+                setUser={setUserFunction}
             />
-            <MesageList
-                deleteFn={this.props.deleteUserFunction}
-                saveValueFn={this.props.saveValueFunction}
-                submit={this.props.submit}
-                add={this.props.add}
+            <FormSubmit
+                add={add}
+                deleteFn={deleteUserFunction}
             />
-            <div className="page">
-                <button onClick={(e)=>this.handleClick(e)}>
-                    Open Modal
-                </button>
-            </div>
-            {this.props.modalItem && <ModalInfo closeModal={this.props.closeModal}/>}
+            {/*<div className="page">*/}
+                {/*<button onClick={this.handleClick}>*/}
+                    {/*Open Modal*/}
+                {/*</button>*/}
+            {/*</div>*/}
         </div>
     );
   }
@@ -51,28 +65,17 @@ class App extends Component {
 
 function mapStateToProps(state) {
     return {
-        user: state.user,
-        add: state.addUser,
-        submit: state.submitInfo,
-        modalItem: state.modalItem
+        menu: state.menu,
+        add: state.createItems,
     }
 }
 function mapDispatchToProps(dispatch) {
     return {
-        setUserFunction: users => {
-            dispatch(setUserAction(users))
+        setUserFunction: items => {
+            dispatch(setUserAction(items))
         },
         deleteUserFunction: index => {
             dispatch(deleteUserAction(index))
-        },
-        saveValueFunction: (value) => {
-            dispatch(saveValueAction(value))
-        },
-        openModal: () => {
-            return dispatch(openModalAction())
-        },
-        closeModal: () => {
-            return dispatch(closeModalAction())
         }
     }
 }

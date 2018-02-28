@@ -1,49 +1,24 @@
 import React, { Component } from 'react';
+import { Field } from 'redux-form';
 
 class ItemParams extends Component {
-    constructor(props) {
-        super(props);
-        // this.handlerValue = this.handlerValue.bind(this);
-        this.handlerSave = this.handlerSave.bind(this);
-        // this.handlerValue = this.handlerValue.bind(this);
-    }
-
-    handlerSave() {
-        this.props.saveValueFn(this.setValue.value)
-    }
-    // handlerValue(e) {
-    //     let x = e.target.value;
-    // }
-
 
     render() {
-    // console.log(this.handlerValue());
+        const { item } = this.props;
         return (
             <div className="wrapSelect">
                 <div className="itemHeader">
-                    {this.props.item.name}
+                    {item.name}
                 </div>
                 <div className="itemProp">
-                    <select
-                        className="params"
-                        // value={this.props.submit}
-                        // onChange={this.handlerValue}
-                        ref={(value) => {this.setValue = value}}
-                    >
-                        <option value={this.props.item.prop1}>{this.props.item.prop1}</option>
-                        <option value={this.props.item.prop2}>{this.props.item.prop2}</option>
-                        <option value={this.props.item.prop3}>{this.props.item.prop3}</option>
-                        <option value={this.props.item.prop4}>{this.props.item.prop4}</option>
-                        <option value={this.props.item.prop5}>{this.props.item.prop5}</option>
-                    </select>
-                </div>
-                <div className="saveBtn">
-                    <button
-                        className="save"
-                        onClick={this.handlerSave}
-                    >
-                        Save
-                    </button>
+                    <Field name={item.name} component="select" className="params">
+                        <option/>
+                        <option value={item.prop1}>{item.prop1}</option>
+                        <option value={item.prop2}>{item.prop2}</option>
+                        <option value={item.prop3}>{item.prop3}</option>
+                        <option value={item.prop4}>{item.prop4}</option>
+                        <option value={item.prop5}>{item.prop5}</option>
+                    </Field>
                 </div>
             </div>
         )
