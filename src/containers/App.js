@@ -11,24 +11,6 @@ import deleteUserAction from '../Actions/ItemDelete';
 import '../assets/style/App.css';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        // this.state = {
-        //     isShowModal: false,
-        // }
-    }
-
-    handleClick = () => {
-        this.setState({
-            isShowModal: !this.props.isShowModal
-        })
-    };
-
-    closeModal2 = () => {
-        this.setState({
-            isShowModal: false,
-        })
-    }
 
   render() {
         const {
@@ -38,13 +20,6 @@ class App extends Component {
             deleteUserFunction } = this.props;
     return (
         <div className="wrapContainer">
-            {/*{*/}
-                {/*this.state.isShowModal &&*/}
-                {/*<ModalInfo*/}
-                    {/*closeModal2={this.closeModal2}*/}
-                    {/*data={this.props.menu}*/}
-                {/*/>*/}
-            {/*}*/}
             <MenuList
                 menu={menu}
                 setUser={setUserFunction}
@@ -53,11 +28,6 @@ class App extends Component {
                 add={add}
                 deleteFn={deleteUserFunction}
             />
-            {/*<div className="page">*/}
-                {/*<button onClick={this.handleClick}>*/}
-                    {/*Open Modal*/}
-                {/*</button>*/}
-            {/*</div>*/}
         </div>
     );
   }

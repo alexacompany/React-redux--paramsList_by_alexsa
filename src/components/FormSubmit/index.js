@@ -64,7 +64,7 @@ class FormSubmit extends Component {
                                          key={index}
                                     >
                                         <ItemParams
-                                            item={item}
+                                            items={item}
                                         />
                                         <div className="wrapBtn">
                                             <BtnDelete

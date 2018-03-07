@@ -10,7 +10,6 @@ class MenuList extends Component {
     }
 
     render() {
-        // console.log(this.state.isOpenDropdown)
         const { menu } = this.props;
         return (
             <div className="propertyList">
@@ -26,19 +25,12 @@ class MenuList extends Component {
                                 <li onClick={this.onBtnClick}
                                     className="itemProperty"
                                     key={index}
-                                    id={index}
-                                >
+                                    id={index}>
                                     <div className="about">
                                         <p className="name">{item.name}</p>
-                                        <div className="status">
-
-                                            {/*{*/}
-                                            {/*isShow.includes(id) &&*/}
-                                            {/*<i className="fa fa-circle online"></i>*/}
-                                            {/*}*/}
-
+                                        <p className="status">
                                             for tests
-                                        </div>
+                                        </p>
                                     </div>
                                     <img src={item.img} alt="click"/>
                                 </li>
